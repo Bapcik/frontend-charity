@@ -1,0 +1,39 @@
+.container_mission_statement {
+  display: flex;
+  padding: 60px 0 70px;
+  background: #fafafa;
+}
+
+.mission_statement_text_button {
+  max-width: 700px;
+}
+
+.mission_statement_title {
+  font-family: "Abril Fatface", serif;
+  font-size: 65px;
+}
+
+.mission_statement_text {
+  font-size: 20px;
+  color: #3a170080;
+}
+
+.mission_statement_button {
+  color: #fff;
+  background-color: #7e8ab8;
+  border-radius: 40px;
+  padding: 14px 29px;
+}
+
+.mission_statement_oval {
+  height: 85px;
+}
+
+.mission_statement_social {
+  width: 40%;
+}
+.mission_statement_text_img {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}

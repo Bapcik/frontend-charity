@@ -1,0 +1,24 @@
+.container_about_us_card {
+  max-width: 400px;
+  border-radius: 15px;
+  padding: 30px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+
+.about_us_card_title_img {
+  display: flex;
+  align-items: center;
+
+  .about_us_card_img {
+    height: 45px;
+    margin-right: 20px;
+  }
+
+  .about_us_card_title {
+    color: #3a1700;
+  }
+}
+
+.about_us_card_body_text {
+  color: #3a170074;
+}
