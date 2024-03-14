@@ -1,0 +1,65 @@
+.container_card_people {
+  max-width: 360px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.5);
+  border-radius: 15px;
+
+  .card_people_img {
+    width: 100%;
+    border-radius: 15px 15px 0 0;
+  }
+
+  .container_card_people_body {
+    padding: 0 30px 30px;
+  }
+
+  .card_people_title {
+    color: #3a1700;
+    font-size: 16px;
+  }
+}
+
+.container_card_people_money {
+  display: flex;
+  justify-content: space-between;
+  .card_people_money_raised {
+    color: #3a1700;
+  }
+  .card_people_raise_money {
+    color: #3a170070;
+  }
+}
+
+.progressBar {
+  width: 100%;
+  height: 10px;
+  background-color: #f0f0f0;
+  border-radius: 5px;
+  margin-bottom: 30px;
+
+  .progress {
+    height: 100%;
+    background-color: #2fb0ab;
+    border-radius: 5px;
+  }
+}
+
+.container_card_people_button {
+  display: flex;
+  justify-content: space-between;
+
+  .card_people_button_help {
+    border-radius: 30px;
+    background-color: #7e8ab8;
+    color: #fff;
+    padding: 13px 26px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 1.5);
+  }
+
+  .card_people_button_look {
+    border-radius: 30px;
+    background-color: #fff;
+    color: #7e8ab8;
+    padding: 13px 26px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.7);
+  }
+}

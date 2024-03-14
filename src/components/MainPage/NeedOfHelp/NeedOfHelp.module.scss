@@ -1,0 +1,33 @@
+.container_need_of_help {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  margin-bottom: 50px;
+
+  .need_of_help_text {
+    color: #009eff;
+    text-align: center;
+    margin: 0;
+  }
+
+  .need_of_help_title {
+    color: #3a1700;
+    text-align: center;
+    font-size: 55px;
+    margin-top: 0;
+    font-weight: 300;
+  }
+}
+
+.container_need_of_help_card {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 60px;
+}
+
+.show_more_button {
+  color: #7e8ab8;
+  display: inline-block;
+  cursor: pointer;
+  margin: 40px 0;
+}

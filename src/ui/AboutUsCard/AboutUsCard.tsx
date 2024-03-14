@@ -1,4 +1,4 @@
-import { CardData } from "../../interface/ICard";
+import { CardData } from "../../interface/ICardAboutUs";
 import styles from "./AboutUsCard.module.scss";
 
 interface CardProps {
@@ -9,7 +9,11 @@ export const AboutUsCard: React.FC<CardProps> = ({ data }) => {
   return (
     <div className={styles.container_about_us_card}>
       <div className={styles.about_us_card_title_img}>
-        <img className={styles.about_us_card_img} src={data.imageUrl} alt={data.title} />
+        <img
+          className={styles.about_us_card_img}
+          src={data.imageUrl}
+          alt={data.title}
+        />
         <h3 className={styles.about_us_card_title}>{data.title}</h3>
       </div>
       <div className={styles.about_us_card_body}>

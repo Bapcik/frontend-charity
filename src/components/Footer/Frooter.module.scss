@@ -2,15 +2,15 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width: 100vw;
+  width: 100%;
   background-color: #fafafa;
   height: 90px;
 }
 
 .footer_text {
-  margin-left: 70px;
   font-size: 16px;
   color: #7e8ab872;
+  margin-left: 70px;
 }
 
 .footer_container_icon {
