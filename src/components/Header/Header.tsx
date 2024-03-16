@@ -6,8 +6,11 @@ export const Header = () => {
   return (
     <div className={styles.container_header}>
       <div className={styles.header_img_container}>
+        <a href="/" className={styles.header_link_logo}>
         <img src={logo} alt="logo" className={styles.header_img_logo} />
         <img src={textLogo} alt="logo" className={styles.header_img_logoText} />
+        </a>
+       
       </div>
       <div className={styles.header_link_container}>
         <a className={styles.header_link} href="#">
@@ -21,7 +24,7 @@ export const Header = () => {
         <a className={styles.header_button_help} href="#">
           ПОМОЧЬ
         </a>
-        <a className={styles.header_button_need_help} href="#">
+        <a className={styles.header_button_need_help} href="/form">
           НУЖНА ПОМОЩЬ
         </a>
       </div>

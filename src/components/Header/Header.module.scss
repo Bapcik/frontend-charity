@@ -10,6 +10,11 @@
 .header_img_container {
   display: flex;
   align-items: center;
+
+  .header_link_logo{
+    display: flex;
+    align-items: center;
+  }
   .header_img_logo {
     height: 50px;
     margin-right: 10px;

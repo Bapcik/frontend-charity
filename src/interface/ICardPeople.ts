@@ -5,4 +5,5 @@ export interface ICardPeople {
   image: string;
   moneyRaised: number;
   raiseMoney: number;
+  video:string;
 }
