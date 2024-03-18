@@ -1,11 +1,4 @@
-import {
-  Button,
-  Form,
-  Input,
-  Upload,
-  UploadProps,
-  message,
-} from "antd";
+import { Button, Form, Input, Upload, UploadProps, message } from "antd";
 import { CKEditor } from "@ckeditor/ckeditor5-react";
 import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
 import { useState } from "react";
@@ -60,7 +53,7 @@ export const FormPage = () => {
   return (
     <div className={styles.container_form_page}>
       <div className={styles.container_form_page_body}>
-        <h2>Форма подачи помощи</h2>
+        <h2 className={styles.form_page_title}>Форма подачи помощи</h2>
         <InformationText text=" Вся ниже указанная информация будет отображаться в вашей анкете." />
         <div>
           <Form
@@ -70,17 +63,19 @@ export const FormPage = () => {
           >
             <div className={styles.container_form_page_input}>
               <div>
+                <label className={styles.form_page_input_label}>ФИО</label>
                 <Form.Item
-                  label="ФИО"
                   name="fullName"
                   rules={[{ required: true, message: "Введите ФИО" }]}
                 >
-                  <Input />
+                  <Input className={styles.form_page_input} />
                 </Form.Item>
               </div>
               <div>
+                <label className={styles.form_page_input_label}>
+                  Номер телефона
+                </label>
                 <Form.Item
-                  label="Номер телефона"
                   name="phone"
                   rules={[
                     { required: true, message: "Введите номер телефона" },
@@ -94,40 +89,52 @@ export const FormPage = () => {
               </div>
 
               <div>
+                <label className={styles.form_page_input_label}>
+                  Номер карты
+                </label>
                 <Form.Item
-                  label="Номер карты"
                   name="card"
                   rules={[{ required: true, message: "Введите номер карты" }]}
                 >
-                  <Input maxLength={16} />
+                  <Input maxLength={16} className={styles.form_page_input} />
                 </Form.Item>
               </div>
 
               <div>
+                <label className={styles.form_page_input_label}>Сумма</label>
                 <Form.Item
-                  label="Сумма"
                   name="raiseMoney"
                   rules={[{ required: true, message: "Введите сумму" }]}
                 >
                   <input
-                   type="text" inputMode="numeric" pattern="[0-9]*"
+                    type="text"
+                    inputMode="numeric"
+                    pattern="[0-9]*"
                     className={styles.form_page_input_money}
                   />
                 </Form.Item>
               </div>
             </div>
-            <h3>Описание</h3>
+            <h3 className={styles.form_page_input_title}>Описание</h3>
+
+            <label className={styles.form_page_input_label}>
+              Заголовок обращения
+            </label>
             <Form.Item
-              label="Заголовок  обращения"
               name="title"
               rules={[{ required: true, message: "Введите название" }]}
               className={styles.form_page_form_title}
             >
-              <Input />
+              <Input className={styles.form_page_input} />
             </Form.Item>
 
+            <div style={{ margin: "20px 0" }}>
+              <InformationText text=" Опишите вашу ситуацию." />
+            </div>
+
+            <label className={styles.form_page_input_label}>О вас</label>
+
             <Form.Item
-              label="О вас"
               name="description"
               rules={[{ required: true, message: "Напишите о своей проблеме" }]}
               className={styles.form_page_form_description}
@@ -135,13 +142,13 @@ export const FormPage = () => {
               <CKEditor
                 editor={ClassicEditor}
                 data={descriptionInput}
-                onChange={(event, editor) => {
+                onChange={(_event, editor) => {
                   const data = editor.getData();
                   setDescriptionInput(data);
                 }}
               />
             </Form.Item>
-            <label className="label">Видео</label>
+
             <Form.Item
               name="video"
               rules={[
@@ -154,11 +161,19 @@ export const FormPage = () => {
                 },
               ]}
             >
-              <Input placeholder="Вставьте ссылку из youtube" />
+              <div className={styles.container_form_page_input_text}>
+                <label className={styles.form_page_input_label}>Видео</label>
+                <p className={styles.form_page_input_text}>
+                  *Необязательная информация
+                </p>
+              </div>
+              <Input
+                placeholder="Вставьте ссылку из youtube"
+                className={styles.form_page_input}
+              />
             </Form.Item>
 
             <Form.Item
-              label="Фото"
               name="image"
               rules={[
                 {
@@ -167,19 +182,39 @@ export const FormPage = () => {
                 },
               ]}
             >
-              <Dragger {...props} accept=".jpg,.jpeg,.png" maxCount={1}>
-                <p className="ant-upload-drag-icon">
-                  <img src={gallery} alt="gallery" />
+              <div className={styles.container_form_page_input_text}>
+                <label className={styles.form_page_input_label}>
+                  Фотография
+                </label>
+                <p className={styles.form_page_input_text}>
+                  *Обязательная информация
                 </p>
-                <p className="ant-upload-text">
-                  Загрузить файл или перетащите файл
+              </div>
+              <Dragger
+                {...props}
+                accept=".jpg,.jpeg,.png"
+                maxCount={1}
+                className={styles.form_page_input_dragger}
+              >
+                <img src={gallery} alt="gallery" />
+
+                <div className={styles.container_form_page_input_dragger}>
+                  <p className={styles.form_page_input_dragger_button}>
+                    Загрузить файл
+                  </p>
+                  <p className={styles.form_page_input_dragger_text}>
+                    или перетащите файл
+                  </p>
+                </div>
+
+                <p className={styles.form_page_input_dragger_text_warning}>
+                  PNG, JPG до 10MB
                 </p>
-                <p className="ant-upload-hint">PNG, JPG до 10MB</p>
               </Dragger>
             </Form.Item>
             <div className={styles.container_form_page_button}>
               <Form.Item wrapperCol={{ span: 24 }}>
-                <Button className="button" htmlType="submit">
+                <Button className={styles.form_page_button} htmlType="submit">
                   Отправить на модерацию
                 </Button>
                 <AboutModerationModal />
