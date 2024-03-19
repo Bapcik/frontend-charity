@@ -1,7 +1,8 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import HomePage from "./pages/HomePage/HomePage";
 import Layout from "./components/Layout/Layout";
 import { FilingForm } from "./pages/FilingForm/FilingForm";
+import { HomePage } from "./pages/HomePage/HomePage";
+import { AdminEntrance } from "./pages/AdminEntrance/AdminEntrance";
 
 const App = () => {
   return (
@@ -10,6 +11,7 @@ const App = () => {
         <Route path="/"  element={<Layout />}>
           <Route path="/" element={<HomePage />} />
           <Route path="/form" element={<FilingForm />} />
+          <Route path="/admin" element={<AdminEntrance />} />
         </Route>
       </Routes>
     </BrowserRouter>

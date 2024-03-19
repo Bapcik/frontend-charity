@@ -3,7 +3,7 @@ import { MakeTheWorldBetter } from "../../components/MainPage/MakeTheWorldBetter
 import { MissionStatement } from "../../components/MainPage/MissionStatement/MissionStatement";
 import { NeedOfHelp } from "../../components/MainPage/NeedOfHelp/NeedOfHelp";
 
-const HomePage = () => {
+export const HomePage = () => {
   return (
     <div>
       <MissionStatement />
@@ -13,5 +13,3 @@ const HomePage = () => {
     </div>
   );
 };
-
-export default HomePage;
