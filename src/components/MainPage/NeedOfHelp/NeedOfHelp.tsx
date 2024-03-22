@@ -1,8 +1,8 @@
 import { useState } from "react";
 import { mockData } from "../../../mocks/MockPeople";
+import { useGetAllCharity } from "../../../services/useGetAllCharity.ts";
 import { CardPeople } from "../../../ui/CardPeople/CardPeople";
 import styles from "./NeedOfHelp.module.scss";
-import { useGetAllCharity } from "../../../services/useGetAllCharity.ts";
 
 export const NeedOfHelp = () => {
   const [visibleCards, setVisibleCards] = useState(3);
@@ -16,7 +16,9 @@ export const NeedOfHelp = () => {
   return (
     <div className={styles.container_need_of_help}>
       <p className={styles.need_of_help_text}>НУЖДАЮЩИЕСЯ В ПОМОЩИ</p>
-      <h3 className={styles.need_of_help_title}>Высокотехнологичная помощь</h3>
+      <h3 id="help" className={styles.need_of_help_title}>
+        Высокотехнологичная помощь
+      </h3>
 
       <div className={styles.container_need_of_help_card}>
         {data.slice(0, visibleCards).map((item, index) => (
