@@ -3,10 +3,9 @@ import { UploadFile } from "antd";
 export interface IPeopleData {
   fullName: string;
   phone: number;
-  card: string;
+  cardNumber: string;
   title: string;
-  description: string;
+  appealDescription: string;
   image: UploadFile;
-  raiseMoney: number;
-  video: string;
+  sum: number;
 }

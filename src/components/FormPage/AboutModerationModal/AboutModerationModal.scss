@@ -1,5 +1,6 @@
 .about-moderation-modal {
 	font-family: Montserrat;
+	padding: 20px;
 	.modal-title {
 		font-weight: 500;
 		font-size: 18px;
@@ -8,6 +9,8 @@
 		}
 	}
 	.modal-text {
+
+		text-align: center;
 		font-size: 13px;
 		max-width: 350px;
 		@media (max-width: 430px) {

@@ -1,4 +1,12 @@
-import { Button, Form, Input, Upload, UploadProps, message } from "antd";
+import {
+  Button,
+  Form,
+  Input,
+  Upload,
+  UploadProps,
+  message,
+  UploadFile,
+} from "antd";
 import { CKEditor } from "@ckeditor/ckeditor5-react";
 import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
 import { useState } from "react";
@@ -8,46 +16,41 @@ import AboutModerationModal from "./AboutModerationModal/AboutModerationModal.ts
 import gallery from "../../assets/gallery.svg";
 import InputMask from "react-input-mask";
 import styles from "./FormPage.module.scss";
+import { usePostCharity } from "../../services/usePostCharity.ts";
 
 const { Dragger } = Upload;
 
-const props: UploadProps = {
-  name: "file",
-  multiple: true,
-  action: "https://run.mocky.io/v3/435e224c-44fb-4773-9faf-380c5e6a2188",
-  onChange(info) {
-    const { status } = info.file;
-    if (status !== "uploading") {
-      console.log(info.file, info.fileList);
-    }
-    if (status === "done") {
-      message.success(`${info.file.name} file uploaded successfully.`);
-    } else if (status === "error") {
-      message.error(`${info.file.name} file upload failed.`);
-    }
-  },
-  onDrop(e) {
-    console.log("Dropped files", e.dataTransfer.files);
-  },
-};
-
 export const FormPage = () => {
   const [descriptionInput, setDescriptionInput] = useState("");
+  const { mutate: PostCharity } = usePostCharity();
+  const [uploadImage, setUploadImage] = useState<UploadFile>();
+  const props: UploadProps = {
+    name: "file",
+    multiple: true,
+    action: "https://run.mocky.io/v3/435e224c-44fb-4773-9faf-380c5e6a2188",
+    onChange(info) {
+      const { status } = info.file;
+      if (status !== "uploading") {
+        setUploadImage(info.fileList);
+      }
+      if (status === "done") {
+        message.success(`${info.file.name} file uploaded successfully.`);
+      } else if (status === "error") {
+        message.error(`${info.file.name} file upload failed.`);
+      }
+    },
+  };
 
   const handleUpload = async (values: IPeopleData) => {
     const formData = new FormData();
     formData.append("fullName", values.fullName);
     formData.append("phone", String(values.phone));
-    formData.append("card", values.card);
+    formData.append("cardNumber", values.cardNumber);
     formData.append("title", values.title);
-    formData.append("description", descriptionInput);
-    if (values.image) {
-      formData.append("image", values.image.originFileObj!);
-    }
-
-    formData.append("raiseMoney", String(values.raiseMoney));
-    formData.append("video", values.video);
-    console.log(formData);
+    formData.append("appealDescription", descriptionInput);
+    formData.append("image", uploadImage[0].originFileObj as Blob);
+    formData.append("sum", String(values.sum));
+    PostCharity(formData);
   };
 
   return (
@@ -93,7 +96,7 @@ export const FormPage = () => {
                   Номер карты
                 </label>
                 <Form.Item
-                  name="card"
+                  name="cardNumber"
                   rules={[{ required: true, message: "Введите номер карты" }]}
                 >
                   <Input maxLength={16} className={styles.form_page_input} />
@@ -103,7 +106,7 @@ export const FormPage = () => {
               <div>
                 <label className={styles.form_page_input_label}>Сумма</label>
                 <Form.Item
-                  name="raiseMoney"
+                  name="sum"
                   rules={[{ required: true, message: "Введите сумму" }]}
                 >
                   <input
@@ -135,7 +138,6 @@ export const FormPage = () => {
             <label className={styles.form_page_input_label}>О вас</label>
 
             <Form.Item
-              name="description"
               rules={[{ required: true, message: "Напишите о своей проблеме" }]}
               className={styles.form_page_form_description}
             >
@@ -150,31 +152,6 @@ export const FormPage = () => {
             </Form.Item>
 
             <Form.Item
-              name="video"
-              rules={[
-                {
-                  type: "url",
-                  message: "Пожалуйста, введите корректную ссылку на видео",
-                },
-                {
-                  message: "Введите ссылку на видео",
-                },
-              ]}
-            >
-              <div className={styles.container_form_page_input_text}>
-                <label className={styles.form_page_input_label}>Видео</label>
-                <p className={styles.form_page_input_text}>
-                  *Необязательная информация
-                </p>
-              </div>
-              <Input
-                placeholder="Вставьте ссылку из youtube"
-                className={styles.form_page_input}
-              />
-            </Form.Item>
-
-            <Form.Item
-              name="image"
               rules={[
                 {
                   required: true,
@@ -192,6 +169,7 @@ export const FormPage = () => {
               </div>
               <Dragger
                 {...props}
+                name="image"
                 accept=".jpg,.jpeg,.png"
                 maxCount={1}
                 className={styles.form_page_input_dragger}
