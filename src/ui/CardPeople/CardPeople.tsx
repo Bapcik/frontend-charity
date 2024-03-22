@@ -1,24 +1,29 @@
 import { ICardPeople } from "../../interface/ICardPeople";
 import styles from "./CardPeople.module.scss";
+import { FC } from "react";
 
 interface CardProps {
   data: ICardPeople;
 }
 
-export const CardPeople: React.FC<CardProps> = ({ data }) => {
-  const progress = (data.moneyRaised / data.raiseMoney) * 100;
+export const CardPeople: FC<CardProps> = ({ data }) => {
+  const progress = (data.sum / data.sumCollected) * 100;
   return (
     <div className={styles.container_card_people}>
       <img
         className={styles.card_people_img}
-        src={data.image}
+        src={`http://localhost:3000/uploads/${data.image}`}
         alt={data.title}
       />
       <div className={styles.container_card_people_body}>
         <h2 className={styles.card_people_title}>{data.title}</h2>
         <div className={styles.container_card_people_money}>
-          <p className={styles.card_people_money_raised}>${data.moneyRaised}</p>
-          <p className={styles.card_people_raise_money}>${data.raiseMoney}</p>
+          <p className={styles.card_people_money_raised}>
+            {data.sum.toLocaleString()} ₸
+          </p>
+          <p className={styles.card_people_raise_money}>
+            ${data.sumCollected.toLocaleString()} ₸
+          </p>
         </div>
         <div className={styles.progressBar}>
           <div

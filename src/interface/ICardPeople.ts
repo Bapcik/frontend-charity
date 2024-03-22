@@ -1,9 +1,10 @@
 export interface ICardPeople {
   id: number;
+  fullName: string;
   title: string;
-  description: string;
+  appealDescription: string;
+  cardNumber: number;
   image: string;
-  moneyRaised: number;
-  raiseMoney: number;
-  video:string;
+  sum: number;
+  sumCollected: number;
 }
