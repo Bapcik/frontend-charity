@@ -7,4 +7,5 @@ export interface ICardPeople {
   image: string;
   sum: number;
   sumCollected: number;
+  isPublish: boolean;
 }

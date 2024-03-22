@@ -4,7 +4,7 @@ import { ICardPeople } from "../interface/ICardPeople.ts";
 
 export const useGetAllCharity = () => {
   return useQuery({
-    queryKey: ["getOnePsychologist"],
+    queryKey: ["getAllCharity"],
     queryFn: async () => {
       const response = await axiosInstance.get<ICardPeople[]>(`charity`);
       return response.data;
