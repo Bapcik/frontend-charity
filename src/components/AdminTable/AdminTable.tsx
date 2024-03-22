@@ -37,27 +37,19 @@ export const AdminTable = () => {
       title: "Сумма",
       dataIndex: "sum",
       width: 200,
-      sorter: {
-        compare: (a, b) => a.sum - b.sum,
-        multiple: 2,
-      },
-      ellipsis: true,
+      render: (_, data) => <div>{data.sum.toLocaleString()}</div>,
     },
     {
       title: "Собранная сумма",
       dataIndex: "sumCollected",
       width: 200,
-      sorter: {
-        compare: (a, b) => a.sumCollected - b.sumCollected,
-        multiple: 1,
-      },
-      ellipsis: true,
+      render: (_, data) => <div>{data.sumCollected.toLocaleString()}</div>,
     },
     {
       title: "Удаление",
       key: "delete",
       width: 110,
-      render: (data) => (
+      render: (_, data) => (
         <Button
           className={styles.btn}
           type="default"
@@ -70,7 +62,7 @@ export const AdminTable = () => {
     {
       title: "Опубликовать",
       key: "view",
-      width: 150,
+      width: 250,
       render: (data) => (
         <Button type="dashed" onClick={() => publish(data.id)}>
           {data.isPublish ? "Снять с публикации" : "Опубликовать"}
