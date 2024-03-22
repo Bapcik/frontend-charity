@@ -5,6 +5,7 @@ import { HomePage } from "./pages/HomePage/HomePage";
 import { AdminEntrance } from "./pages/AdminEntrance/AdminEntrance";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { AdminPage } from "./pages/AdminPage/AdminPage.tsx";
+import { AdminTablePage } from "./pages/AdminTablePage/AdminTablePage.tsx";
 const queryClient = new QueryClient();
 
 const App = () => {
@@ -17,6 +18,7 @@ const App = () => {
             <Route path="/form" element={<FilingForm />} />
             <Route path="/admin" element={<AdminEntrance />} />
             <Route path="/account/admin" element={<AdminPage />} />
+            <Route path="/admin/table" element={<AdminTablePage />} />
           </Route>
         </Routes>
       </BrowserRouter>
