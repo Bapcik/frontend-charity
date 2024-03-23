@@ -1,14 +1,13 @@
 import { useState } from "react";
-import { mockData } from "../../../mocks/MockPeople";
 import { useGetAllCharity } from "../../../services/useGetAllCharity.ts";
 import { CardPeople } from "../../../ui/CardPeople/CardPeople";
 import styles from "./NeedOfHelp.module.scss";
 
 export const NeedOfHelp = () => {
   const [visibleCards, setVisibleCards] = useState(3);
-  const totalCards = mockData.length;
   const { data = [] } = useGetAllCharity();
-  console.log(data);
+  const totalCards = data.length;
+
   const handleShowMore = () => {
     setVisibleCards(visibleCards + 50);
   };

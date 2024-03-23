@@ -16,7 +16,7 @@ export const useAdminLogin = () => {
     },
     onSuccess: async (data) => {
       localStorage.setItem("accessToken", data.accessToken);
-      navigate("/account/admin/");
+      navigate("/admin/table/");
     },
     onError: () => {
       message.error("Не верный данные");
