@@ -1,4 +1,3 @@
-import { useNavigate } from "react-router-dom";
 import { ICardPeople } from "../../interface/ICardPeople";
 import styles from "./CardPeople.module.scss";
 import { FC } from "react";
@@ -11,13 +10,10 @@ interface CardProps {
 export const CardPeople: FC<CardProps> = ({ data }) => {
   const progress = (data.sum / data.sumCollected) * 100;
   const navigate = useNavigate();
-	const navigate = useNavigate();
-
-  const progress = (data.sumCollected / data.sum) * 100;
 
   const onClickReadMore = () => {
-		navigate(`/charity/${data.id}`);
-	};
+    navigate(`/charity/${data.id}`);
+  };
 
   return (
     <div className={styles.container_card_people}>
@@ -49,7 +45,12 @@ export const CardPeople: FC<CardProps> = ({ data }) => {
           >
             ПОМОЧЬ
           </button>
-          <button className={styles.card_people_button_look} onClick={onClickReadMore}>ПОСМОТРЕТЬ</button>
+          <button
+            className={styles.card_people_button_look}
+            onClick={onClickReadMore}
+          >
+            ПОСМОТРЕТЬ
+          </button>
         </div>
       </div>
     </div>
