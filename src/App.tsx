@@ -5,6 +5,7 @@ import { HomePage } from "./pages/HomePage/HomePage";
 import { AdminEntrance } from "./pages/AdminEntrance/AdminEntrance";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { AdminTablePage } from "./pages/AdminTablePage/AdminTablePage.tsx";
+import PayCard from "./components/PayCard/PayCard.tsx";
 import { DetailCardPage } from "./pages/DetailCardPage/DetailCardPage.tsx";
 const queryClient = new QueryClient();
 
@@ -18,6 +19,8 @@ const App = () => {
             <Route path="/form" element={<FilingForm />} />
             <Route path="/admin" element={<AdminEntrance />} />
             <Route path="/admin/table" element={<AdminTablePage />} />
+
+            <Route path="/pay/:id" element={<PayCard />} />
             <Route
 								path="/charity/:id"
 								element={<DetailCardPage />}

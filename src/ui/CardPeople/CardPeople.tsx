@@ -2,12 +2,15 @@ import { useNavigate } from "react-router-dom";
 import { ICardPeople } from "../../interface/ICardPeople";
 import styles from "./CardPeople.module.scss";
 import { FC } from "react";
+import { useNavigate } from "react-router-dom";
 
 interface CardProps {
   data: ICardPeople;
 }
 
 export const CardPeople: FC<CardProps> = ({ data }) => {
+  const progress = (data.sum / data.sumCollected) * 100;
+  const navigate = useNavigate();
 	const navigate = useNavigate();
 
   const progress = (data.sumCollected / data.sum) * 100;
@@ -40,7 +43,12 @@ export const CardPeople: FC<CardProps> = ({ data }) => {
           ></div>
         </div>
         <div className={styles.container_card_people_button}>
-          <button className={styles.card_people_button_help}>ПОМОЧЬ</button>
+          <button
+            onClick={() => navigate(`pay/${data.id}`)}
+            className={styles.card_people_button_help}
+          >
+            ПОМОЧЬ
+          </button>
           <button className={styles.card_people_button_look} onClick={onClickReadMore}>ПОСМОТРЕТЬ</button>
         </div>
       </div>
